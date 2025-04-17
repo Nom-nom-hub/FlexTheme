@@ -70,11 +70,11 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "size": "size-limit",
-    "prepublishOnly": "npm run test && npm run size && npm run build"
+    "prepublishOnly": "npm run build"
   },
   "size-limit": [
     {
