@@ -1,9 +1,9 @@
 # flex-theme
 
-[![npm version](https://img.shields.io/npm/v/flex-theme.svg)](https://www.npmjs.com/package/flex-theme)
-[![License](https://img.shields.io/npm/l/flex-theme.svg)](https://github.com/yourusername/flex-theme/blob/main/LICENSE)
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/flex-theme)](https://bundlephobia.com/package/flex-theme)
-[![CI](https://github.com/yourusername/flex-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/flex-theme/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@teckmill/flex-theme-core.svg)](https://www.npmjs.com/package/@teckmill/flex-theme-core)
+[![License](https://img.shields.io/npm/l/@teckmill/flex-theme-core.svg)](https://github.com/Nom-nom-hub/FlexTheme/blob/main/LICENSE)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/@teckmill/flex-theme-core)](https://bundlephobia.com/package/@teckmill/flex-theme-core)
+[![CI](https://github.com/Nom-nom-hub/FlexTheme/actions/workflows/ci.yml/badge.svg)](https://github.com/Nom-nom-hub/FlexTheme/actions/workflows/ci.yml)
 
 A lightweight, flexible theme management system for light/dark modes in web applications.
 
