@@ -1,0 +1,11 @@
+/* Base transition styles */
+.flex-transition {
+  will-change: opacity, transform;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .flex-transition {
+    transition: none !important;
+  }
+}

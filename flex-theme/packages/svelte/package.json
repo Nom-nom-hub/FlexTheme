@@ -1,0 +1,48 @@
+{
+  "name": "@flex-theme/svelte",
+  "version": "1.0.0",
+  "description": "Svelte integration for flex-theme",
+  "author": "",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "svelte": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "peerDependencies": {
+    "svelte": ">=3.0.0"
+  },
+  "dependencies": {
+    "flex-theme": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/flex-theme.git",
+    "directory": "packages/svelte"
+  },
+  "keywords": [
+    "theme",
+    "dark-mode",
+    "light-mode",
+    "svelte",
+    "typescript"
+  ]
+}

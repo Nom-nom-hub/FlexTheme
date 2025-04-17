@@ -1,0 +1,113 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #4361ee;
+  --ifm-color-primary-dark: #2940b3;
+  --ifm-color-primary-darker: #1f3087;
+  --ifm-color-primary-darkest: #15205a;
+  --ifm-color-primary-light: #738eef;
+  --ifm-color-primary-lighter: #a5b9f3;
+  --ifm-color-primary-lightest: #d7e3f8;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #738eef;
+  --ifm-color-primary-dark: #4361ee;
+  --ifm-color-primary-darker: #2940b3;
+  --ifm-color-primary-darkest: #1f3087;
+  --ifm-color-primary-light: #a5b9f3;
+  --ifm-color-primary-lighter: #c6d4f7;
+  --ifm-color-primary-lightest: #e8effc;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Playground styles */
+.playground {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-card-background-color);
+  box-shadow: var(--ifm-global-shadow-lw);
+  margin-bottom: 1.5rem;
+}
+
+.playground-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.playground-preview {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* Component demo styles */
+.component-demo {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-card-background-color);
+  box-shadow: var(--ifm-global-shadow-lw);
+  margin-bottom: 1.5rem;
+}
+
+.component-demo-preview {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  margin-bottom: 1rem;
+}
+
+.component-demo-code {
+  margin-top: 1rem;
+}
+
+/* Props table styles */
+.props-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.props-table th,
+.props-table td {
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.props-table th {
+  background-color: var(--ifm-color-emphasis-100);
+  text-align: left;
+}
+
+.props-table td:first-child {
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: bold;
+}
+
+.props-table td:nth-child(2) {
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-primary);
+}
+
+.props-table td:nth-child(3) {
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-success);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .playground-controls {
+    flex-direction: column;
+  }
+}

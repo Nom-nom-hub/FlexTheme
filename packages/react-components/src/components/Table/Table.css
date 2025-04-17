@@ -1,0 +1,303 @@
+/* Table container */
+.flex-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Table */
+.flex-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.flex-table--full-width {
+  width: 100%;
+}
+
+/* Table sizes */
+.flex-table--sm {
+  font-size: var(--font-size-sm, 0.875rem);
+}
+
+.flex-table--md {
+  font-size: var(--font-size-md, 1rem);
+}
+
+.flex-table--lg {
+  font-size: var(--font-size-lg, 1.125rem);
+}
+
+/* Table header */
+.flex-table-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.flex-table-header--theme-light {
+  background-color: var(--color-surfaceVariant, #f0f0f0);
+  color: var(--color-textPrimary, #212529);
+}
+
+.flex-table-header--theme-dark {
+  background-color: var(--color-surfaceVariant, #2a2a2a);
+  color: var(--color-textPrimary, #f8f9fa);
+}
+
+/* Table header cell */
+.flex-table-th {
+  padding: var(--spacing-md, 1rem);
+  text-align: left;
+  font-weight: var(--font-weight-bold, 700);
+  white-space: nowrap;
+  position: relative;
+}
+
+.flex-table--sm .flex-table-th {
+  padding: var(--spacing-sm, 0.5rem);
+}
+
+.flex-table--lg .flex-table-th {
+  padding: var(--spacing-lg, 1.5rem);
+}
+
+.flex-table-th--center {
+  text-align: center;
+}
+
+.flex-table-th--right {
+  text-align: right;
+}
+
+/* Sortable header */
+.flex-table-th--sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.flex-table-th--sortable:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.flex-table-header--theme-dark .flex-table-th--sortable:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.flex-table-th-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-table-sort-icon {
+  margin-left: var(--spacing-sm, 0.5rem);
+  opacity: 0.5;
+}
+
+.flex-table-th--sorted-asc .flex-table-sort-icon,
+.flex-table-th--sorted-desc .flex-table-sort-icon {
+  opacity: 1;
+}
+
+/* Table body */
+.flex-table-body--theme-light {
+  color: var(--color-textPrimary, #212529);
+}
+
+.flex-table-body--theme-dark {
+  color: var(--color-textPrimary, #f8f9fa);
+}
+
+/* Table row */
+.flex-table-row--theme-light {
+  background-color: var(--color-surface, #f8f9fa);
+}
+
+.flex-table-row--theme-dark {
+  background-color: var(--color-surface, #1e1e1e);
+}
+
+/* Striped rows */
+.flex-table--striped .flex-table-row--theme-light:nth-child(even) {
+  background-color: var(--color-surfaceVariant, #f0f0f0);
+}
+
+.flex-table--striped .flex-table-row--theme-dark:nth-child(even) {
+  background-color: var(--color-surfaceVariant, #2a2a2a);
+}
+
+/* Hoverable rows */
+.flex-table--hoverable .flex-table-row:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.flex-table--hoverable .flex-table-row--theme-dark:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Clickable rows */
+.flex-table-row--clickable {
+  cursor: pointer;
+}
+
+/* Table cell */
+.flex-table-td {
+  padding: var(--spacing-md, 1rem);
+  border-top: 1px solid;
+}
+
+.flex-table--sm .flex-table-td {
+  padding: var(--spacing-sm, 0.5rem);
+}
+
+.flex-table--lg .flex-table-td {
+  padding: var(--spacing-lg, 1.5rem);
+}
+
+.flex-table-td--center {
+  text-align: center;
+}
+
+.flex-table-td--right {
+  text-align: right;
+}
+
+.flex-table-row--theme-light .flex-table-td {
+  border-top-color: var(--color-divider, #eeeeee);
+}
+
+.flex-table-row--theme-dark .flex-table-td {
+  border-top-color: var(--color-divider, #2c2c2c);
+}
+
+/* Bordered table */
+.flex-table--bordered {
+  border: 1px solid;
+}
+
+.flex-table--bordered.flex-table--theme-light {
+  border-color: var(--color-divider, #eeeeee);
+}
+
+.flex-table--bordered.flex-table--theme-dark {
+  border-color: var(--color-divider, #2c2c2c);
+}
+
+.flex-table--bordered .flex-table-th,
+.flex-table--bordered .flex-table-td {
+  border: 1px solid;
+}
+
+.flex-table--bordered.flex-table--theme-light .flex-table-th,
+.flex-table--bordered.flex-table--theme-light .flex-table-td {
+  border-color: var(--color-divider, #eeeeee);
+}
+
+.flex-table--bordered.flex-table--theme-dark .flex-table-th,
+.flex-table--bordered.flex-table--theme-dark .flex-table-td {
+  border-color: var(--color-divider, #2c2c2c);
+}
+
+/* Empty state */
+.flex-table-empty {
+  padding: var(--spacing-xl, 2rem);
+  text-align: center;
+  color: var(--color-textSecondary, #6c757d);
+}
+
+/* Loading state */
+.flex-table--loading {
+  opacity: 0.7;
+}
+
+.flex-table-loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm, 0.5rem);
+}
+
+.flex-table-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid transparent;
+  border-top-color: var(--color-primary, #4361ee);
+  border-radius: 50%;
+  animation: flex-table-spin 1s linear infinite;
+}
+
+@keyframes flex-table-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pagination */
+.flex-table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--spacing-md, 1rem) 0;
+  gap: var(--spacing-sm, 0.5rem);
+}
+
+.flex-table-pagination--theme-light {
+  color: var(--color-textPrimary, #212529);
+}
+
+.flex-table-pagination--theme-dark {
+  color: var(--color-textPrimary, #f8f9fa);
+}
+
+.flex-table-pagination-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 var(--spacing-sm, 0.5rem);
+  border: 1px solid;
+  border-radius: var(--radius-sm, 0.125rem);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.flex-table-pagination--theme-light .flex-table-pagination-button {
+  border-color: var(--color-border, #e0e0e0);
+  color: var(--color-textPrimary, #212529);
+}
+
+.flex-table-pagination--theme-dark .flex-table-pagination-button {
+  border-color: var(--color-border, #333333);
+  color: var(--color-textPrimary, #f8f9fa);
+}
+
+.flex-table-pagination-button:hover:not(:disabled) {
+  background-color: var(--color-surfaceVariant, #f0f0f0);
+}
+
+.flex-table-pagination--theme-dark .flex-table-pagination-button:hover:not(:disabled) {
+  background-color: var(--color-surfaceVariant, #2a2a2a);
+}
+
+.flex-table-pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.flex-table-pagination-info {
+  margin: 0 var(--spacing-md, 1rem);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .flex-table-spinner {
+    animation: none;
+  }
+  
+  .flex-table-pagination-button {
+    transition: none;
+  }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex-theme Test</title>
+  <style>
+    :root {
+      --background: #ffffff;
+      --text: #000000;
+      --card-bg: #f0f0f0;
+    }
+
+    [data-theme="dark"] {
+      --background: #1a1a1a;
+      --text: #ffffff;
+      --card-bg: #2a2a2a;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background-color: var(--card-bg);
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>flex-theme Test</h1>
+      <p>This is a simple test page for the flex-theme package.</p>
+      
+      <div>
+        <p>Current theme: <span id="current-theme">loading...</span></p>
+        <p>Resolved theme: <span id="resolved-theme">loading...</span></p>
+      </div>
+      
+      <div style="margin-top: 20px;">
+        <button id="toggle-btn">Toggle Theme</button>
+        
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="auto">Auto (System)</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Theme Change Log</h2>
+      <pre id="log" style="max-height: 200px; overflow-y: auto; background-color: var(--card-bg); padding: 10px; border-radius: 4px;"></pre>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import from the local build
+    import { getTheme, getResolvedTheme, setTheme, toggleTheme, onThemeChange } from './dist/index.mjs';
+    
+    // Elements
+    const currentThemeEl = document.getElementById('current-theme');
+    const resolvedThemeEl = document.getElementById('resolved-theme');
+    const toggleBtn = document.getElementById('toggle-btn');
+    const themeSelect = document.getElementById('theme-select');
+    const logEl = document.getElementById('log');
+    
+    // Update UI
+    function updateUI() {
+      const theme = getTheme();
+      const resolvedTheme = getResolvedTheme();
+      
+      currentThemeEl.textContent = theme;
+      resolvedThemeEl.textContent = resolvedTheme;
+      themeSelect.value = theme;
+      
+      logMessage(`Theme updated: ${theme} (resolved as ${resolvedTheme})`);
+    }
+    
+    // Log message
+    function logMessage(message) {
+      const timestamp = new Date().toLocaleTimeString();
+      logEl.textContent = `[${timestamp}] ${message}\n${logEl.textContent}`;
+    }
+    
+    // Event listeners
+    toggleBtn.addEventListener('click', () => {
+      toggleTheme();
+    });
+    
+    themeSelect.addEventListener('change', (e) => {
+      setTheme(e.target.value);
+    });
+    
+    // Subscribe to theme changes
+    onThemeChange((theme, resolvedTheme) => {
+      updateUI();
+    });
+    
+    // Initial update
+    updateUI();
+    logMessage('flex-theme initialized');
+  </script>
+</body>
+</html>

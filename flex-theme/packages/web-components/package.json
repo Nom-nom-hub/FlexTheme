@@ -1,0 +1,44 @@
+{
+  "name": "@flex-theme/web-components",
+  "version": "1.0.0",
+  "description": "Web Components for flex-theme",
+  "author": "",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "flex-theme": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/flex-theme.git",
+    "directory": "packages/web-components"
+  },
+  "keywords": [
+    "theme",
+    "dark-mode",
+    "light-mode",
+    "web-components",
+    "typescript"
+  ]
+}
