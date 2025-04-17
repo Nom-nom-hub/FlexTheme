@@ -29,11 +29,11 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@flex-theme/core": "workspace:*"
+    "@teckmill/flex-theme-core": "workspace:*"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/flex-theme.git",
+    "url": "https://github.com/Nom-nom-hub/FlexTheme.git",
     "directory": "packages/react"
   },
   "keywords": [

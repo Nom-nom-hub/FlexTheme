@@ -1,7 +1,10 @@
 {
-  "name": "@flex-theme/core",
+  "name": "@teckmill/flex-theme-core",
   "version": "1.0.0",
   "description": "Core functionality for flex-theme",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "",
   "license": "MIT",
   "sideEffects": false,
@@ -27,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/flex-theme.git",
+    "url": "https://github.com/Nom-nom-hub/FlexTheme.git",
     "directory": "packages/core"
   },
   "keywords": [
