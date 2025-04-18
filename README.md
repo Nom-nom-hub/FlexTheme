@@ -10,10 +10,18 @@ A lightweight, flexible theme management system for light/dark modes in web appl
 - 🌓 Light, dark, and auto themes with system detection
 - 💾 Persists preferences using localStorage
 - 🔄 Runtime reactivity with callback listeners
-- ⚛️ React hook support
+- ⚛️ React hook support (compatible with React 16.8+ through React 19)
 - 🌐 SSR-safe (no window references on server)
 - 🪶 Zero dependencies
 - 📦 Tree-shakable with "sideEffects: false"
+
+## React 19 Compatibility
+
+This package is fully compatible with React 19. If you're using React 19 with the React Compiler, you may need to install with the `--legacy-peer-deps` flag until all dependencies are updated:
+
+```bash
+npm install flex-theme --legacy-peer-deps
+```
 
 ## Installation
 

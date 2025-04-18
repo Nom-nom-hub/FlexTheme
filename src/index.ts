@@ -1,35 +1,21 @@
 // Export core functionality
 export {
   getTheme,
-  getResolvedTheme,
   setTheme,
   toggleTheme,
   onThemeChange,
-  configure,
-} from './core';
+  offThemeChange,
+  ThemeProvider
+} from './theme';
 
-// Export types
-export type {
-  Theme,
-  FlexThemeConfig,
-  ThemeChangeListener,
-  FlexThemeResult,
-} from './types';
+// Import and export types
+import { ThemeMode, ThemeListener } from './types';
+export { ThemeMode, ThemeListener };
 
-// Export tokens
-export * from './tokens';
-
-// Export utilities
-export * from './utils';
-
-// Export i18n
-export * from './i18n';
-
-// Export animations
-export * from './animations';
-
-// Export presets
-export * from './presets';
-
-// Export plugins
-export * from './plugins';
+// Export React-specific functionality
+export {
+  useTheme,
+  useToggleTheme,
+  useSystemTheme,
+  useThemeWithStorage
+} from './react';

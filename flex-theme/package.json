@@ -1,0 +1,26 @@
+{
+  "name": "flex-theme",
+  "version": "1.0.1",
+  "description": "A flexible theming system for web applications",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "theme",
+    "dark-mode",
+    "light-mode",
+    "react"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  }
+} 
