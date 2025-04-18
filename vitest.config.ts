@@ -14,7 +14,13 @@ export default defineConfig({
     setupFiles: ['./test/setup.ts'],
     include: [
       './test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-      './src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+      './src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+      './packages/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
     ],
+    deps: {
+      // Ensure proper module resolution
+      interopDefault: true,
+      moduleDirectories: ['node_modules', 'packages']
+    }
   },
 });

@@ -10,14 +10,32 @@ export default defineWorkspace([
       root: '.',
       resolve: {
         alias: {
-          '../../src': resolve(__dirname, 'src'),
-          '../../packages': resolve(__dirname, 'packages')
+          '@': resolve(__dirname, './src'),
+          '@packages': resolve(__dirname, './packages')
         }
-      }
-    },
-    include: [
-      'test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-      'packages/*/test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
-    ]
+      },
+      include: [
+        'test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+        'src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+      ]
+    }
+  },
+  {
+    test: {
+      name: 'packages',
+      environment: 'jsdom',
+      setupFiles: ['./test/setup.ts'],
+      root: '.',
+      resolve: {
+        alias: {
+          '@': resolve(__dirname, './src'),
+          '@packages': resolve(__dirname, './packages')
+        }
+      },
+      include: [
+        'packages/*/test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+        'packages/*/src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+      ]
+    }
   }
 ]);
