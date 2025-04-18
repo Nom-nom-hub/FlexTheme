@@ -25,5 +25,8 @@
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "happy-dom": "^17.4.4"
   }
-} 
+}
