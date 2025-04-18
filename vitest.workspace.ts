@@ -1,15 +1,23 @@
 import { defineWorkspace } from 'vitest/config';
+import { resolve } from 'path';
 
 export default defineWorkspace([
-  // Include your test directories
-  'test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-  'packages/*/test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-  // You can also include specific config files
   {
     test: {
       name: 'default',
       environment: 'jsdom',
-      setupFiles: ['./test/setup.ts']
-    }
+      setupFiles: ['./test/setup.ts'],
+      root: '.',
+      resolve: {
+        alias: {
+          '../../src': resolve(__dirname, 'src'),
+          '../../packages': resolve(__dirname, 'packages')
+        }
+      }
+    },
+    include: [
+      'test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+      'packages/*/test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+    ]
   }
 ]);
