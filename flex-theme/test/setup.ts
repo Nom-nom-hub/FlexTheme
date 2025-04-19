@@ -21,41 +21,27 @@ beforeAll(() => {
   });
 
   // Mock localStorage
-  const localStorageMock = (() => {
-    let store: Record<string, string> = {};
-    return {
-      getItem: vi.fn((key: string) => store[key] || null),
-      setItem: vi.fn((key: string, value: string) => {
-        store[key] = value.toString();
-      }),
-      removeItem: vi.fn((key: string) => {
-        delete store[key];
-      }),
-      clear: vi.fn(() => {
-        store = {};
-      }),
-      length: 0,
-      key: vi.fn((index: number) => Object.keys(store)[index] || null)
-    };
-  })();
+  const localStorageMock = {
+    getItem: vi.fn().mockImplementation((key: string) => null),
+    setItem: vi.fn().mockImplementation((key: string, value: string) => {}),
+    removeItem: vi.fn().mockImplementation((key: string) => {}),
+    clear: vi.fn().mockImplementation(() => {}),
+    length: 0,
+    key: vi.fn().mockImplementation((index: number) => null),
+  };
 
-  Object.defineProperty(window, 'localStorage', {
-    value: localStorageMock,
-    writable: false
-  });
-  
-  // Define global.localStorage (in Node environment)
+  // Use vi.stubGlobal to mock localStorage globally
   vi.stubGlobal('localStorage', localStorageMock);
 
-  // Mock document methods
-  Object.defineProperty(document.documentElement, 'classList', {
-    value: {
+  // Mock document methods for classList
+  if (typeof document !== 'undefined' && document.documentElement) {
+    document.documentElement.classList = {
       add: vi.fn(),
       remove: vi.fn(),
-      contains: vi.fn(),
+      contains: vi.fn(() => false),
       toggle: vi.fn(),
-    }
-  });
+    };
+  }
 });
 
 // Mock browser APIs that might not be available in the test environment
