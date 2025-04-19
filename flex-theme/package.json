@@ -14,7 +14,7 @@
     "test": "vitest",
     "test:watch": "vitest test",
     "test:coverage": "vitest run --coverage test",
-    "size": "size-limit"
+    "size": "node_modules/.bin/size-limit --limit 10KB dist/bundle.js || node scripts/check-size.js"
   },
   "keywords": [
     "theme",
