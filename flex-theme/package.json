@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && cp dist/index.js dist/bundle.js",
     "prepublishOnly": "npm run build",
     "test": "vitest",
     "test:watch": "vitest test",
@@ -34,7 +34,15 @@
   },
   "size-limit": [
     {
+      "path": "dist/index.js",
+      "limit": "10 kB"
+    },
+    {
       "path": "dist/index.mjs",
+      "limit": "10 kB"
+    },
+    {
+      "path": "dist/bundle.js",
       "limit": "10 kB"
     }
   ]
