@@ -27,11 +27,14 @@ jobs:
         # Alternative: Skip tests for now
         # run: echo "Skipping tests temporarily"
 
-      - name: Check bundle size
-        run: npm run size
-
       - name: Build package
         run: npm run build
+
+      - name: List dist directory contents
+        run: ls -la dist/
+
+      - name: Check bundle size
+        run: npm run size
 
       - name: Publish to NPM
         run: npm publish
