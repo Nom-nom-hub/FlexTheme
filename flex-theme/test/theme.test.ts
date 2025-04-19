@@ -3,7 +3,7 @@ import { getTheme, setTheme, toggleTheme, onThemeChange, offThemeChange, getReso
 
 describe('Theme Module', () => {
   beforeEach(() => {
-    // Reset localStorage mock calls
+    // Reset all mocks before each test
     vi.clearAllMocks();
     
     // Reset theme for each test
@@ -30,8 +30,8 @@ describe('Theme Module', () => {
   });
   
   it('should set the theme correctly', () => {
-    // Reset the localStorage mock calls from the setup
-    vi.mocked(localStorage.setItem).mockClear();
+    // Clear previous mock calls
+    vi.clearAllMocks();
     
     // Set theme to dark
     setTheme('dark');
@@ -39,11 +39,9 @@ describe('Theme Module', () => {
     // Verify the theme was set correctly
     expect(getTheme()).toBe('dark');
     
-    // Verify localStorage.setItem was called
+    // Verify localStorage.setItem was called with the correct arguments
     expect(localStorage.setItem).toHaveBeenCalled();
-    expect(vi.mocked(localStorage.setItem).mock.calls.some(
-      call => call[0] === 'theme' && call[1] === 'dark'
-    )).toBe(true);
+    expect(localStorage.setItem).toHaveBeenCalledWith('theme', 'dark');
   });
   
   it('should toggle the theme', () => {
