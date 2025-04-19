@@ -7,6 +7,18 @@ let currentTheme: ThemeMode = 'system';
 const listeners: ThemeListener[] = [];
 
 /**
+ * Safely check if window.matchMedia is available and matches the query
+ * @param query Media query to check
+ * @returns True if the media query matches, false otherwise
+ */
+function safeMatchMedia(query: string): boolean {
+  if (typeof window === 'undefined') return false;
+  if (typeof window.matchMedia !== 'function') return false;
+  
+  return window.matchMedia(query).matches;
+}
+
+/**
  * Initialize theme from localStorage or system preference
  */
 function initTheme(): void {
@@ -38,7 +50,7 @@ function applyTheme(): void {
   
   // If theme is 'system', determine from system preferences
   if (effectiveTheme === 'system') {
-    effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    effectiveTheme = safeMatchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'light';
   }
   
   // Apply theme to document
@@ -60,6 +72,17 @@ function applyTheme(): void {
  * Get the current theme
  */
 export function getTheme(): ThemeMode {
+  return currentTheme;
+}
+
+/**
+ * Get the resolved theme (light or dark)
+ * Takes into account the 'system' setting
+ */
+export function getResolvedTheme(): 'light' | 'dark' {
+  if (currentTheme === 'system') {
+    return safeMatchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'light';
+  }
   return currentTheme;
 }
 
@@ -109,13 +132,32 @@ if (typeof window !== 'undefined') {
   initTheme();
   
   // Listen for system preference changes
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (currentTheme === 'system') {
-      applyTheme();
-      // Notify listeners
-      listeners.forEach(listener => listener(currentTheme));
+  if (typeof window.matchMedia === 'function') {
+    try {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      // Use addEventListener if available, otherwise use addListener (deprecated)
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', () => {
+          if (currentTheme === 'system') {
+            applyTheme();
+            // Notify listeners
+            listeners.forEach(listener => listener(currentTheme));
+          }
+        });
+      } else if (mediaQuery.addListener) {
+        mediaQuery.addListener(() => {
+          if (currentTheme === 'system') {
+            applyTheme();
+            // Notify listeners
+            listeners.forEach(listener => listener(currentTheme));
+          }
+        });
+      }
+    } catch (e) {
+      console.error('Error setting up media query listener:', e);
     }
-  });
+  }
 }
 
 // Export a ThemeProvider component for frameworks that need it

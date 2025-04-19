@@ -1,0 +1,147 @@
+/* Button component styles */
+
+.flex-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: var(--flex-radius-md, 0.375rem);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  gap: 0.5rem;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+/* Size variants */
+.flex-button-sm {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  height: 2rem;
+}
+
+.flex-button-md {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  height: 2.5rem;
+}
+
+.flex-button-lg {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.125rem;
+  height: 3rem;
+}
+
+/* Style variants */
+.flex-button-primary {
+  background-color: var(--flex-primary, #3b82f6);
+  color: var(--flex-button-text, white);
+}
+
+.flex-button-primary:hover {
+  background-color: var(--flex-primary-hover, #2563eb);
+}
+
+.flex-button-secondary {
+  background-color: var(--flex-secondary, #6366f1);
+  color: var(--flex-button-text, white);
+}
+
+.flex-button-secondary:hover {
+  background-color: var(--flex-secondary-hover, #4f46e5);
+}
+
+.flex-button-outline {
+  background-color: transparent;
+  color: var(--flex-primary, #3b82f6);
+  border: 1px solid var(--flex-primary, #3b82f6);
+}
+
+.flex-button-outline:hover {
+  background-color: var(--flex-primary-transparent, rgba(59, 130, 246, 0.1));
+}
+
+.flex-button-ghost {
+  background-color: transparent;
+  color: var(--flex-text-primary, #1a1a1a);
+}
+
+.flex-button-ghost:hover {
+  background-color: var(--flex-ghost-hover, rgba(0, 0, 0, 0.05));
+}
+
+.flex-button-link {
+  background-color: transparent;
+  color: var(--flex-primary, #3b82f6);
+  padding: 0;
+  height: auto;
+  text-decoration: none;
+}
+
+.flex-button-link:hover {
+  text-decoration: underline;
+}
+
+/* Full width */
+.flex-button-full-width {
+  width: 100%;
+}
+
+/* Disabled state */
+.flex-button:disabled,
+.flex-button-loading {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loading indicator */
+.flex-button-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+}
+
+.flex-button-spinner-inner {
+  width: 100%;
+  height: 100%;
+  border: 2px solid currentColor;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: flex-button-spin 0.8s linear infinite;
+}
+
+@keyframes flex-button-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Button elements positioning */
+.flex-button-text,
+.flex-button-left-icon,
+.flex-button-right-icon,
+.flex-button-loading-indicator {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Focus state */
+.flex-button:focus-visible {
+  box-shadow: 0 0 0 3px var(--flex-focus-ring, rgba(59, 130, 246, 0.3));
+}
+
+/* Responsive button */
+@media (max-width: 640px) {
+  .flex-button-lg {
+    padding: 0.625rem 1rem;
+    font-size: 1rem;
+    height: 2.75rem;
+  }
+} 

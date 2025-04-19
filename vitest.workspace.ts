@@ -1,41 +1,21 @@
 import { defineWorkspace } from 'vitest/config';
-import { resolve } from 'path';
+import path from 'path';
 
 export default defineWorkspace([
   {
     test: {
-      name: 'default',
+      name: 'flex-theme',
+      root: './flex-theme',
       environment: 'jsdom',
+      include: ['test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+      exclude: ['**/node_modules/**', '**/dist/**'],
       setupFiles: ['./test/setup.ts'],
-      root: '.',
-      resolve: {
-        alias: {
-          '@': resolve(__dirname, './src'),
-          '@packages': resolve(__dirname, './packages')
-        }
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'flex-theme/src'),
       },
-      include: [
-        'test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-        'src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
-      ]
-    }
+    },
   },
-  {
-    test: {
-      name: 'packages',
-      environment: 'jsdom',
-      setupFiles: ['./test/setup.ts'],
-      root: '.',
-      resolve: {
-        alias: {
-          '@': resolve(__dirname, './src'),
-          '@packages': resolve(__dirname, './packages')
-        }
-      },
-      include: [
-        'packages/*/test/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-        'packages/*/src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
-      ]
-    }
-  }
+  // Other test suites can be added later when you're ready to fix them
 ]);

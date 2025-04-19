@@ -1,0 +1,168 @@
+/* Switch component styles */
+
+.flex-switch-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.flex-switch-inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.flex-switch-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.flex-switch-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.flex-switch-track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: var(--flex-input-border, #d1d5db);
+  transition: all 0.2s ease;
+}
+
+.flex-switch-thumb {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transform: translateX(0);
+  transition: transform 0.2s ease;
+}
+
+/* Size variants */
+.flex-switch-sm .flex-switch-track {
+  width: 1.5rem;
+  height: 0.875rem;
+}
+
+.flex-switch-sm .flex-switch-thumb {
+  width: 0.625rem;
+  height: 0.625rem;
+  left: 0.125rem;
+}
+
+.flex-switch-sm .flex-switch-text {
+  font-size: 0.875rem;
+}
+
+.flex-switch-sm .flex-switch-input:checked + .flex-switch-label .flex-switch-thumb {
+  transform: translateX(0.625rem);
+}
+
+.flex-switch-md .flex-switch-track {
+  width: 1.875rem;
+  height: 1rem;
+}
+
+.flex-switch-md .flex-switch-thumb {
+  width: 0.75rem;
+  height: 0.75rem;
+  left: 0.125rem;
+}
+
+.flex-switch-md .flex-switch-text {
+  font-size: 1rem;
+}
+
+.flex-switch-md .flex-switch-input:checked + .flex-switch-label .flex-switch-thumb {
+  transform: translateX(0.875rem);
+}
+
+.flex-switch-lg .flex-switch-track {
+  width: 2.5rem;
+  height: 1.25rem;
+}
+
+.flex-switch-lg .flex-switch-thumb {
+  width: 1rem;
+  height: 1rem;
+  left: 0.125rem;
+}
+
+.flex-switch-lg .flex-switch-text {
+  font-size: 1.125rem;
+}
+
+.flex-switch-lg .flex-switch-input:checked + .flex-switch-label .flex-switch-thumb {
+  transform: translateX(1.25rem);
+}
+
+/* Checked state */
+.flex-switch-input:checked + .flex-switch-label .flex-switch-track {
+  background-color: var(--flex-primary, #3b82f6);
+}
+
+/* Focus state */
+.flex-switch-input:focus-visible + .flex-switch-label .flex-switch-track {
+  box-shadow: 0 0 0 3px var(--flex-focus-ring, rgba(59, 130, 246, 0.3));
+  outline: none;
+}
+
+/* Hover state */
+.flex-switch-label:hover .flex-switch-track {
+  background-color: var(--flex-input-border-hover, #9ca3af);
+}
+
+.flex-switch-input:checked + .flex-switch-label:hover .flex-switch-track {
+  background-color: var(--flex-primary-hover, #2563eb);
+}
+
+/* Disabled state */
+.flex-switch-disabled .flex-switch-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.flex-switch-disabled .flex-switch-track {
+  background-color: var(--flex-input-disabled-bg, #f3f4f6);
+}
+
+/* Invalid state */
+.flex-switch-invalid .flex-switch-track {
+  background-color: var(--flex-error, #ef4444);
+}
+
+.flex-switch-error {
+  font-size: 0.875rem;
+  color: var(--flex-error, #ef4444);
+  margin-top: 0.25rem;
+}
+
+/* Description */
+.flex-switch-description {
+  font-size: 0.875rem;
+  color: var(--flex-text-secondary, #4b5563);
+}
+
+/* Color schemes */
+.flex-switch-success .flex-switch-input:checked + .flex-switch-label .flex-switch-track {
+  background-color: var(--flex-success, #10b981);
+}
+
+.flex-switch-danger .flex-switch-input:checked + .flex-switch-label .flex-switch-track {
+  background-color: var(--flex-error, #ef4444);
+}
+
+.flex-switch-warning .flex-switch-input:checked + .flex-switch-label .flex-switch-track {
+  background-color: var(--flex-warning, #f59e0b);
+} 

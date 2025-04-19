@@ -1,0 +1,131 @@
+/* Checkbox component styles */
+
+.flex-checkbox-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.flex-checkbox-inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.flex-checkbox-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.flex-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.flex-checkbox-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--flex-input-border, #d1d5db);
+  background-color: var(--flex-input-bg, #ffffff);
+  border-radius: var(--flex-radius-sm, 0.25rem);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.flex-checkbox-check {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+}
+
+/* Size variants */
+.flex-checkbox-sm .flex-checkbox-control {
+  width: 1rem;
+  height: 1rem;
+}
+
+.flex-checkbox-sm .flex-checkbox-text {
+  font-size: 0.875rem;
+}
+
+.flex-checkbox-md .flex-checkbox-control {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.flex-checkbox-md .flex-checkbox-text {
+  font-size: 1rem;
+}
+
+.flex-checkbox-lg .flex-checkbox-control {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.flex-checkbox-lg .flex-checkbox-text {
+  font-size: 1.125rem;
+}
+
+/* Checked state */
+.flex-checkbox-input:checked + .flex-checkbox-label .flex-checkbox-control {
+  background-color: var(--flex-primary, #3b82f6);
+  border-color: var(--flex-primary, #3b82f6);
+}
+
+.flex-checkbox-input:checked + .flex-checkbox-label .flex-checkbox-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Focus state */
+.flex-checkbox-input:focus-visible + .flex-checkbox-label .flex-checkbox-control {
+  box-shadow: 0 0 0 3px var(--flex-focus-ring, rgba(59, 130, 246, 0.3));
+  outline: none;
+}
+
+/* Hover state */
+.flex-checkbox-label:hover .flex-checkbox-control {
+  border-color: var(--flex-primary, #3b82f6);
+}
+
+/* Disabled state */
+.flex-checkbox-disabled .flex-checkbox-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.flex-checkbox-disabled .flex-checkbox-control {
+  background-color: var(--flex-input-disabled-bg, #f3f4f6);
+}
+
+/* Invalid state */
+.flex-checkbox-invalid .flex-checkbox-control {
+  border-color: var(--flex-error, #ef4444);
+}
+
+.flex-checkbox-invalid .flex-checkbox-input:checked + .flex-checkbox-label .flex-checkbox-control {
+  background-color: var(--flex-error, #ef4444);
+  border-color: var(--flex-error, #ef4444);
+}
+
+.flex-checkbox-error {
+  font-size: 0.875rem;
+  color: var(--flex-error, #ef4444);
+  margin-top: 0.25rem;
+}
+
+/* Description */
+.flex-checkbox-description {
+  font-size: 0.875rem;
+  color: var(--flex-text-secondary, #4b5563);
+} 
