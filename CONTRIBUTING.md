@@ -5,7 +5,7 @@ Thank you for considering contributing to FlexTheme! This document provides guid
 ## Development Setup
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/FlexTheme.git`
+2. Clone your fork: `git clone https://github.com/Nom-nom-hub/FlexTheme.git`
 3. Install dependencies: `pnpm install`
 4. Run tests: `pnpm test`
 
