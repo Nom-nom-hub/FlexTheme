@@ -13,7 +13,8 @@
     "prepublishOnly": "npm run build",
     "test": "vitest",
     "test:watch": "vitest test",
-    "test:coverage": "vitest run --coverage test"
+    "test:coverage": "vitest run --coverage test",
+    "size": "size-limit"
   },
   "keywords": [
     "theme",
@@ -27,6 +28,14 @@
     "react": ">=16.8.0"
   },
   "devDependencies": {
-    "happy-dom": "^17.4.4"
-  }
+    "happy-dom": "^17.4.4",
+    "@size-limit/preset-small-lib": "^8.0.0",
+    "size-limit": "^8.0.0"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.mjs",
+      "limit": "10 kB"
+    }
+  ]
 }

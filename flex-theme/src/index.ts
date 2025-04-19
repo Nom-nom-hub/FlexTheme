@@ -3,10 +3,10 @@ export { getTheme, setTheme, toggleTheme, onThemeChange, offThemeChange } from '
 
 // Export React hooks
 export { 
-  useToggleTheme,
+  useFlexTheme,
   useSystemTheme, 
   useThemeWithStorage,
-  useTheme as useReactTheme
+  ThemeProvider
 } from './react';
 
 // Export types
