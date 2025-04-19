@@ -8,6 +8,14 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nom-nom-hub/FlexTheme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nom-nom-hub/FlexTheme/issues"
+  },
+  "homepage": "https://github.com/Nom-nom-hub/FlexTheme#readme",
   "scripts": {
     "clean": "rm -rf dist tsup.*.log .turbo",
     "prebuild": "npm run clean",
@@ -21,7 +29,18 @@
     "theme",
     "dark-mode",
     "light-mode",
-    "react"
+    "react",
+    "theming",
+    "dark-theme",
+    "light-theme",
+    "system-theme",
+    "color-scheme",
+    "appearance",
+    "color-mode",
+    "theme-switcher",
+    "react-hooks",
+    "typescript",
+    "web"
   ],
   "author": "Your Name",
   "license": "MIT",
