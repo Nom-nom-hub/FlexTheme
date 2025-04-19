@@ -1,5 +1,5 @@
-// Simplified export for debugging build issues
-export const version = "1.0.2";
+// Export minimal functionality
+export const version = '1.0.4';
 
-// Export core theme functionality only
+// Export minimal theme functionality
 export { getTheme, setTheme, toggleTheme } from './theme';
