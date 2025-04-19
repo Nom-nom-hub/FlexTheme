@@ -1,5 +1,5 @@
 {
-  "name": "@teckmill/flex-theme-core",
+  "name": "flex-theme",
   "version": "1.0.3",
   "description": "A flexible theming system for web applications",
   "main": "dist/index.js",
