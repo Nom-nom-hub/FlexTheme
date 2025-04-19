@@ -1,13 +1,11 @@
-// Export theme functionality
-export { getTheme, setTheme, toggleTheme, onThemeChange, offThemeChange } from './theme';
+// Temporary index file for debugging build issues
+console.log('FlexTheme loaded');
 
-// Export React hooks
-export { 
-  useFlexTheme,
-  useSystemTheme, 
-  useThemeWithStorage,
-  ThemeProvider
-} from './react';
+// Export minimal functionality
+export const version = '1.0.1';
 
-// Export types
+// Export minimal theme functionality
+export { getTheme, setTheme, toggleTheme } from './theme';
+
+// Export types from types.ts
 export type { ThemeMode, ThemeListener } from './types'; 

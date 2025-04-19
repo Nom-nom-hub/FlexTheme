@@ -25,5 +25,25 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Debug project structure
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Project structure:"
+          find . -type f -name "*.ts" | sort
+          echo "Package.json:"
+          cat package.json
+          echo "Index.ts:"
+          cat src/index.ts
+          echo "TSup config:"
+          cat tsup.config.ts
+
       - name: Build package
         run: npm run build
+        
+      - name: Check build output
+        run: |
+          echo "Build output:"
+          ls -la dist/
+          echo "Index.js:"
+          cat dist/index.js | head -n 10

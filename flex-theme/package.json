@@ -9,6 +9,8 @@
     "dist"
   ],
   "scripts": {
+    "clean": "rm -rf dist tsup.*.log .turbo",
+    "prebuild": "npm run clean",
     "build": "tsup",
     "prepublishOnly": "npm run build",
     "test": "vitest",
@@ -27,6 +29,9 @@
     "react": ">=16.8.0"
   },
   "devDependencies": {
-    "happy-dom": "^17.4.4"
+    "happy-dom": "^17.4.4",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.0.0"
   }
 }

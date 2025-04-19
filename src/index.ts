@@ -1,21 +1,5 @@
-// Export core functionality
-export {
-  getTheme,
-  setTheme,
-  toggleTheme,
-  onThemeChange,
-  offThemeChange,
-  ThemeProvider
-} from './theme';
+// Simplified export for debugging build issues
+export const version = "1.0.1";
 
-// Import and export types
-import { ThemeMode, ThemeListener } from './types';
-export { ThemeMode, ThemeListener };
-
-// Export React-specific functionality
-export {
-  useTheme,
-  useToggleTheme,
-  useSystemTheme,
-  useThemeWithStorage
-} from './react';
+// Export core theme functionality only
+export { getTheme, setTheme, toggleTheme } from './theme';

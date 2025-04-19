@@ -38,20 +38,17 @@ export function configure(options: Partial<ThemeConfig>): void {
   }
 }
 
+// Simplified theme module for building
+export type Theme = 'light' | 'dark' | 'system';
+
+// Default theme
+let currentTheme: Theme = 'system';
+
 /**
  * Get the current theme
- * @returns The current theme ('light', 'dark', or 'auto')
  */
 export function getTheme(): Theme {
-  if (typeof window === 'undefined') return config.defaultTheme;
-  
-  const storedTheme = localStorage.getItem(config.storageKey) as Theme | null;
-  
-  if (storedTheme && ['light', 'dark', 'auto'].includes(storedTheme)) {
-    return storedTheme;
-  }
-  
-  return config.defaultTheme;
+  return currentTheme;
 }
 
 /**
@@ -72,34 +69,21 @@ export function getResolvedTheme(): ResolvedTheme {
 
 /**
  * Set the theme
- * @param theme The theme to set ('light', 'dark', or 'auto')
  */
 export function setTheme(theme: Theme): void {
-  if (typeof window === 'undefined') return;
-  
-  if (!['light', 'dark', 'auto'].includes(theme)) {
-    console.error(`Invalid theme: ${theme}. Must be 'light', 'dark', or 'auto'`);
+  if (!['light', 'dark', 'system'].includes(theme)) {
+    console.error(`Invalid theme: ${theme}. Must be 'light', 'dark', or 'system'`);
     return;
   }
   
-  localStorage.setItem(config.storageKey, theme);
-  
-  applyThemeToDOM(theme);
-  
-  // Notify subscribers
-  const resolvedTheme = getResolvedTheme();
-  themeChangeCallbacks.forEach(callback => callback(theme, resolvedTheme));
+  currentTheme = theme;
 }
 
 /**
  * Toggle between light and dark themes
- * If the current theme is 'auto', it will be set to the opposite of the current system preference
  */
 export function toggleTheme(): void {
-  const currentTheme = getTheme();
-  const resolvedTheme = getResolvedTheme();
-  
-  const newTheme: Theme = resolvedTheme === 'light' ? 'dark' : 'light';
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
   setTheme(newTheme);
 }
 
