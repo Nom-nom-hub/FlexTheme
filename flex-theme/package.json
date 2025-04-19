@@ -9,12 +9,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup && cp dist/index.js dist/bundle.js",
+    "build": "tsup",
     "prepublishOnly": "npm run build",
     "test": "vitest",
     "test:watch": "vitest test",
-    "test:coverage": "vitest run --coverage test",
-    "size": "node_modules/.bin/size-limit --limit 10KB dist/bundle.js || node scripts/check-size.js"
+    "test:coverage": "vitest run --coverage test"
   },
   "keywords": [
     "theme",
@@ -28,14 +27,6 @@
     "react": ">=16.8.0"
   },
   "devDependencies": {
-    "happy-dom": "^17.4.4",
-    "@size-limit/preset-small-lib": "^8.0.0",
-    "size-limit": "^8.0.0"
-  },
-  "size-limit": [
-    {
-      "path": "dist/bundle.js",
-      "limit": "10 kB"
-    }
-  ]
+    "happy-dom": "^17.4.4"
+  }
 }

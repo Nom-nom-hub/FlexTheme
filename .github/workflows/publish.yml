@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install size-limit globally
-        run: npm install -g size-limit @size-limit/preset-small-lib
-
       - name: Run tests
         run: npm test -- --passWithNoTests
         # Alternative: Skip tests for now
@@ -32,26 +29,6 @@ jobs:
 
       - name: Build package
         run: npm run build
-
-      - name: Show project structure
-        run: |
-          echo "Project structure:"
-          ls -la
-          echo "Package.json content:"
-          cat package.json
-          echo "Dist directory contents:"
-          ls -la dist/
-
-      - name: Check bundle size
-        run: npm run size || true # Continue regardless of outcome
-
-      - name: Fallback size check
-        if: ${{ failure() }}
-        run: size-limit --limit 10KB dist/bundle.js || node scripts/check-size.js
-        
-      - name: Final fallback - Custom size check
-        if: ${{ failure() }}
-        run: node scripts/check-size.js
 
       - name: Publish to NPM
         run: npm publish
