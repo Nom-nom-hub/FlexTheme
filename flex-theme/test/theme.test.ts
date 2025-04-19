@@ -1,28 +1,15 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 import { getTheme, setTheme, toggleTheme, onThemeChange, offThemeChange, getResolvedTheme } from '../src/theme';
 
 describe('Theme Module', () => {
-  // Save original environment
-  const originalLocalStorage = global.localStorage;
-  
   beforeEach(() => {
     // Reset theme for each test
     setTheme('light');
     
-    // Mock localStorage
-    global.localStorage = {
-      getItem: vi.fn().mockImplementation((key) => {
-        if (key === 'theme') return getTheme();
-        return null;
-      }),
-      setItem: vi.fn(),
-      removeItem: vi.fn(),
-      clear: vi.fn(),
-      length: 0,
-      key: vi.fn()
-    };
+    // Reset localStorage mocks before each test
+    vi.clearAllMocks();
     
-    // Mock matchMedia
+    // Default matchMedia mock - respond to dark mode query
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
       value: vi.fn().mockImplementation(query => ({

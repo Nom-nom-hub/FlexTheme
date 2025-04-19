@@ -5,6 +5,7 @@ expect.extend(matchers);
 
 // Mock window.matchMedia and localStorage before tests
 beforeAll(() => {
+  // Mock matchMedia
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: vi.fn().mockImplementation(query => ({
@@ -23,23 +24,37 @@ beforeAll(() => {
   const localStorageMock = (() => {
     let store: Record<string, string> = {};
     return {
-      getItem: (key: string) => store[key] || null,
-      setItem: (key: string, value: string) => {
+      getItem: vi.fn((key: string) => store[key] || null),
+      setItem: vi.fn((key: string, value: string) => {
         store[key] = value.toString();
-      },
-      removeItem: (key: string) => {
+      }),
+      removeItem: vi.fn((key: string) => {
         delete store[key];
-      },
-      clear: () => {
+      }),
+      clear: vi.fn(() => {
         store = {};
-      },
+      }),
       length: 0,
-      key: (index: number) => ''
+      key: vi.fn((index: number) => Object.keys(store)[index] || null)
     };
   })();
 
   Object.defineProperty(window, 'localStorage', {
     value: localStorageMock,
+    writable: false
+  });
+  
+  // Define global.localStorage (in Node environment)
+  vi.stubGlobal('localStorage', localStorageMock);
+
+  // Mock document methods
+  Object.defineProperty(document.documentElement, 'classList', {
+    value: {
+      add: vi.fn(),
+      remove: vi.fn(),
+      contains: vi.fn(),
+      toggle: vi.fn(),
+    }
   });
 });
 
