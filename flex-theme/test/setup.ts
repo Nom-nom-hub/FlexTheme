@@ -1,4 +1,4 @@
-import { expect, vi, beforeAll } from 'vitest';
+import { expect, vi, beforeAll, beforeEach } from 'vitest';
 import * as matchers from '@testing-library/jest-dom/matchers';
 
 expect.extend(matchers);
@@ -20,18 +20,18 @@ beforeAll(() => {
     })),
   });
 
-  // Mock localStorage
-  const localStorageMock = {
-    getItem: vi.fn().mockImplementation((key: string) => null),
-    setItem: vi.fn().mockImplementation((key: string, value: string) => {}),
-    removeItem: vi.fn().mockImplementation((key: string) => {}),
-    clear: vi.fn().mockImplementation(() => {}),
-    length: 0,
-    key: vi.fn().mockImplementation((index: number) => null),
-  };
-
-  // Use vi.stubGlobal to mock localStorage globally
-  vi.stubGlobal('localStorage', localStorageMock);
+  // Setup localStorage with a minimal implementation
+  if (!window.localStorage) {
+    const storage = new Map();
+    window.localStorage = {
+      getItem: (key) => storage.get(key) || null,
+      setItem: (key, value) => storage.set(key, String(value)),
+      removeItem: (key) => storage.delete(key),
+      clear: () => storage.clear(),
+      length: 0,
+      key: () => null,
+    };
+  }
 
   // Mock document methods for classList
   if (typeof document !== 'undefined' && document.documentElement) {
@@ -42,4 +42,13 @@ beforeAll(() => {
       toggle: vi.fn(),
     };
   }
+});
+
+// Setup spies before each test
+beforeEach(() => {
+  // Spy on localStorage methods
+  vi.spyOn(localStorage, 'getItem');
+  vi.spyOn(localStorage, 'setItem');
+  vi.spyOn(localStorage, 'removeItem');
+  vi.spyOn(localStorage, 'clear');
 });
